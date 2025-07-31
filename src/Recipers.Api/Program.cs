@@ -12,6 +12,7 @@ builder.Services.AddOpenApi(api =>
     api.AddDocumentTransformer<SecurityDocumentTransformer>();
 });
 
+// ------------------- Authentication and Authorization -------------------
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -31,10 +32,10 @@ builder.Services.AddAuthorization(options =>
 {
     // Add policies or configure authorization options if needed
 });
+// ------------------- End Authentication and Authorization -------------------
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IRecipeService, InMemoryRecipeService>();
-
 
 var app = builder.Build();
 

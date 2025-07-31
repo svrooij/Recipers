@@ -58,6 +58,7 @@ public class MinimalApiEndpointsValidator
         }
     }
 
+    // ------------------------- Authentication Tests -------------------------
     [Theory]
     [MemberData(nameof(GetAllEndpointsUsingOpenApiSpec))]
     public async Task Endpoint_should_return_statuscode_401_without_valid_token(string path, string method)
@@ -72,7 +73,9 @@ public class MinimalApiEndpointsValidator
         var result2 = await _client.SendAsync(req2, TestContext.Current.CancellationToken);
         result2.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{method.ToUpper()} {path}` should return 401 with a faulty token");
     }
+    // ------------------------- End Authentication Tests ---------------------
 }
+
 
 
 [CollectionDefinition(MinimalApiEndpointsValidator.CollectionName)]

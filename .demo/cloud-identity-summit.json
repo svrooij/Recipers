@@ -1,0 +1,204 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "Cloud Identity Summit",
+  "description": "Hack your API for integration testing at the Cloud Identity Summit.",
+  "version": 2,
+  "demos": [
+    {
+      "title": "Introduction Slide",
+      "description": "Start the slide deck",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Dark Modern"
+        },
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/cis2025/slide-intro.md"
+        }
+      ]
+    },
+    {
+      "title": "JWT Authentication",
+      "description": "Explaning JWT Authentication (in dotnet)",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Dark Modern"
+        },
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/jwt.md"
+        }
+      ]
+    },
+    {
+      "title": "Program.cs",
+      "description": "Show how JWT Authentication is configured in the Program.cs file",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Light Modern"
+        },
+        {
+          "action": "open",
+          "path": "src\\Recipers.Api\\Program.cs"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.files.action.showActiveFileInExplorer"
+        },
+        {
+          "action": "highlight",
+          "path": "src\\Recipers.Api\\Program.cs",
+          "startPlaceholder": "// ------------------- Authentication and Authorization -------------------",
+          "endPlaceholder": "// ------------------- End Authentication and Authorization -------------------"
+        }
+      ]
+    },
+    {
+      "title": "appsettings.json",
+      "description": "Show how JWT Authentication is configured in the appsettings.json file",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Light Modern"
+        },
+        {
+          "action": "open",
+          "path": "src\\Recipers.Api\\appsettings.json"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.files.action.showActiveFileInExplorer"
+        },
+        {
+          "action": "highlight",
+          "path": ".\\src\\Recipers.Api\\appsettings.json",
+          "position": "9:17",
+          "highlightWholeLine": true
+        }
+      ]
+    },
+    {
+      "id": "demo-mdruswqm-luy4",
+      "title": "Show API",
+      "steps": [
+        {
+          "action": "open",
+          "path": "src\\Recipers.Api\\Program.cs"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.debug.start"
+        }
+      ],
+      "description": "Start the API and show what we are talking about. This will start the process and launch an external browser"
+    },
+    {
+      "title": "Test for failures",
+      "description": "If you enable authentication, be sure to validate that all endpoints in fact require authentication",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Dark Modern"
+        },
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/require-auth.md"
+        }
+      ],
+      "id": "demo-mdrv738n-8trd"
+    },
+    {
+      "title": "Authentication test",
+      "description": "How to automatically test for authentication on all endpoints",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Light Modern"
+        },
+        {
+          "action": "open",
+          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.files.action.showActiveFileInExplorer"
+        },
+        {
+          "action": "highlight",
+          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs",
+          "highlightWholeLine": true,
+          "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
+          "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
+        }
+      ],
+      "id": "demo-mdrvve1i-zfqp"
+    },
+    {
+      "title": "Inject signing keys",
+      "description": "How are we going to trick the api into trusting our fake tokens?",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Dark Modern"
+        },
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/identity-proxy.md"
+        }
+      ],
+      "id": "demo-mdrxfed2-702q"
+    },
+    {
+      "title": "Use Identity Proxy",
+      "description": "How to use identity proxy",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Light Modern"
+        },
+        {
+          "action": "open",
+          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.files.action.showActiveFileInExplorer"
+        },
+        {
+          "action": "highlight",
+          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs",
+          "highlightWholeLine": true,
+          "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
+          "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
+        }
+      ],
+      "id": "demo-mdrxi4me-u5rd"
+    },
+    {
+      "title": "Outro",
+      "description": "What did we learn, thank you sponsors, ask me anything at 16:30, please leave feedback",
+      "steps": [
+        {
+          "action": "setTheme",
+          "theme": "Default Dark Modern"
+        },
+        {
+          "action": "openSlide",
+          "path": ".demo\\slides\\cis2025\\slides-end.md"
+        }
+      ]
+    },
+    {
+      "title": "Reset Theme",
+      "description": "Return the editor theme to its default state to clean up after the demo.",
+      "steps": [
+        {
+          "action": "unsetTheme"
+        }
+      ]
+    }
+  ]
+}
