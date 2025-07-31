@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipers.Api", "src\Recipers.Api\Recipers.Api.csproj", "{BDC922DC-431B-46B5-A838-AE7DCC5E1A8B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipers.Api.Tests", "tests\Recipers.Api.Tests\Recipers.Api.Tests.csproj", "{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,23 @@ Global
 		{BDC922DC-431B-46B5-A838-AE7DCC5E1A8B}.Release|x64.Build.0 = Release|Any CPU
 		{BDC922DC-431B-46B5-A838-AE7DCC5E1A8B}.Release|x86.ActiveCfg = Release|Any CPU
 		{BDC922DC-431B-46B5-A838-AE7DCC5E1A8B}.Release|x86.Build.0 = Release|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Debug|x64.Build.0 = Debug|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Release|x64.ActiveCfg = Release|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Release|x64.Build.0 = Release|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6C882B8-8DD2-477A-AFE7-7D8CABA932EE} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal

@@ -38,10 +38,16 @@ builder.Services.AddSingleton<IRecipeService, InMemoryRecipeService>();
 
 var app = builder.Build();
 
+// Enable OpenAPI documentation for development and testing environments
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Testing"))
+{
+    app.MapOpenApi();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseDeveloperExceptionPage();
     app.MapScalarApiReference(options =>
     {
         options.AddOAuth2Authentication("jwt", auth =>

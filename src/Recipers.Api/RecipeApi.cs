@@ -73,9 +73,10 @@ public static class RecipeApi
       operation.Summary = "Update a recipe";
       operation.Description = "Updates a recipe if it is public or owned by the user. The UserId is set from the authenticated user's oid claim.";
       operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-      operation.Responses["404"] = new Microsoft.OpenApi.Models.OpenApiResponse { Description = "Not Found" };
       return operation;
-    });
+    })
+    //.RequireAuthorization()
+    ;
 
     group.MapDelete("/{id:guid}", async (string id, IRecipeService service) =>
       await service.DeleteRecipeAsync(id) ? Results.NoContent() : Results.NotFound())
