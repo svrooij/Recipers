@@ -60,22 +60,17 @@ public class MinimalApiEndpointsValidator
 
     [Theory]
     [MemberData(nameof(GetAllEndpointsUsingOpenApiSpec))]
-    public async Task Endpoint_should_return_statuscode_401_without_token(string path, string method)
+    public async Task Endpoint_should_return_statuscode_401_without_valid_token(string path, string method)
     {
         var req = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), path.Replace("{id}", Guid.NewGuid().ToString()));
         var result = await _client.SendAsync(req, TestContext.Current.CancellationToken);
         result.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{method.ToUpper()} {path}` should require authorization");
-    }
 
-    [Theory]
-    [MemberData(nameof(GetAllEndpointsUsingOpenApiSpec))]
-    public async Task Endpoint_should_return_statuscode_401_with_faulty_token(string path, string method)
-    {
-        var req = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), path.Replace("{id}", Guid.NewGuid().ToString()));
         // Simulate a request with a faulty token
-        req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "faulty_token");
-        var result = await _client.SendAsync(req, TestContext.Current.CancellationToken);
-        result.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{method.ToUpper()} {path}` should require authorization");
+        var req2 = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), path.Replace("{id}", Guid.NewGuid().ToString()));
+        req2.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "this_is_not.a_valid.token");
+        var result2 = await _client.SendAsync(req2, TestContext.Current.CancellationToken);
+        result2.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{method.ToUpper()} {path}` should return 401 with a faulty token");
     }
 }
 

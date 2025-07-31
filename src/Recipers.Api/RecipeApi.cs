@@ -75,7 +75,7 @@ public static class RecipeApi
       operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
       return operation;
     })
-    //.RequireAuthorization()
+    .RequireAuthorization()
     ;
 
     group.MapDelete("/{id:guid}", async (string id, IRecipeService service) =>
