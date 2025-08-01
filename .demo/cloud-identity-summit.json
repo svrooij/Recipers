@@ -7,6 +7,9 @@
     {
       "title": "🧑‍🏫 Intro",
       "description": "Starting slides",
+      "icons": {
+        "start": "device-desktop"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -20,6 +23,9 @@
     {
       "title": "🧑‍🏫 JWT Authentication",
       "description": "Explaning JWT Authentication (in dotnet)",
+      "icons": {
+        "start": "mortar-board"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -33,6 +39,9 @@
     {
       "title": "🧑‍💻 Program.cs",
       "description": "Show how JWT Authentication is configured in the Program.cs file",
+      "icons": {
+        "start": "code"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -52,6 +61,9 @@
     {
       "title": "🧑‍💻 appsettings.json",
       "description": "Show how JWT Authentication is configured in the appsettings.json file",
+      "icons": {
+        "start": "code"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -71,6 +83,9 @@
     {
       "id": "demo-mdruswqm-luy4",
       "title": "🧑‍💻 Show API",
+      "icons": {
+        "start": "run-all"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -89,6 +104,9 @@
     {
       "title": "🧑‍🏫 Test failures ❌",
       "description": "Use automation to test for human error. Forgetting `.RequireAuthentication()` on a single endpoint is easy.",
+      "icons": {
+        "start": "device-desktop"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -103,6 +121,9 @@
     {
       "title": "🧑‍💻 401 on all endpoints",
       "description": "Load OpenAPI spec, send request to all endpoints, expect 401",
+      "icons": {
+        "start": "microscope"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -119,7 +140,8 @@
           "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
         },
         {
-          "action": "waitForInput"
+          "action": "waitForInput",
+          "message": "Run authentication tests?"
         },
         {
           "action": "executeVSCodeCommand",
@@ -130,6 +152,9 @@
     },
     {
       "title": "🧑‍🏫 Inject signing keys",
+      "icons": {
+        "start": "light-bulb"
+      },
       "description": "How are we going to trick the api into trusting our fake tokens?",
       "steps": [
         {
@@ -145,6 +170,9 @@
     {
       "title": "🧑‍💻 IWebApiFactory",
       "description": "Automatically start IdentityProxy and configure the api to use it",
+      "icons": {
+        "start": "code"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -158,6 +186,9 @@
     },
     {
       "title": "🧑‍💻 Recipe tests",
+      "icons": {
+        "start": "microscope"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -173,7 +204,8 @@
           "endPlaceholder": "token.Should().NotBeNull();"
         },
         {
-          "action": "waitForInput"
+          "action": "waitForInput",
+          "message": "Want to debug the Recipe tests?"
         },
         {
           "action": "executeVSCodeCommand",
@@ -185,6 +217,9 @@
     },
     {
       "title": "🧑‍🏫 Protect against MitM",
+      "icons": {
+        "start": "shield"
+      },
       "steps": [
         {
           "action": "snippet",
@@ -199,6 +234,9 @@
     },
     {
       "title": "🧑‍🏫 Outro",
+      "icons": {
+        "start": "device-desktop"
+      },
       "description": "What did we learn, thank you sponsors, ask me anything at 16:30, please leave feedback",
       "steps": [
         {
@@ -212,6 +250,9 @@
     },
     {
       "title": "🏁 Reset VS Code",
+      "icons": {
+        "start": "wrench"
+      },
       "description": "Return the editor theme to its default state to clean up after the demo.",
       "steps": [
         {
