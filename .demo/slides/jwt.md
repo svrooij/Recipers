@@ -21,7 +21,7 @@ sequenceDiagram
 
   U ->> Api: Request with token
   Api -->>Api: Have signing keys cached?
-  opt OpenID Configuration & JWKS
+  opt Load oidc and jwks (+/- 230 ms)
   activate En
   Api->> En: .../.well-known/openid-configuration
   En->> Api: OpenID Configuration
@@ -60,7 +60,6 @@ transition: slideUp
 - JWKS URI
 - ...
 
-
 ---
 layout: image-right
 image: .demo/slides/entra-jwks.png
@@ -78,4 +77,4 @@ title: Configure JWT Authentication in .NET
 
 # Configure JWT Authentication in .NET
 
-## Demo Time! 🧑‍💻
+## 🧑‍💻 Demo Time! 🧑‍💻

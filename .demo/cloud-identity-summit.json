@@ -88,7 +88,7 @@
     },
     {
       "title": "🧑‍🏫 Test failures ❌",
-      "description": "Use automation to test for human error.\nForgetting `.RequireAuthentication()` on a single endpoint is easy.",
+      "description": "Use automation to test for human error. Forgetting `.RequireAuthentication()` on a single endpoint is easy.",
       "steps": [
         {
           "action": "snippet",
@@ -101,8 +101,8 @@
       "id": "demo-mdrv738n-8trd"
     },
     {
-      "title": "🧑‍💻 Authentication test",
-      "description": "How to automatically test for authentication on all endpoints",
+      "title": "🧑‍💻 401 on all endpoints",
+      "description": "Load OpenAPI spec, send request to all endpoints, expect 401",
       "steps": [
         {
           "action": "snippet",
@@ -157,6 +157,20 @@
       "id": "demo-mdrxi4me-u5rd"
     },
     {
+      "title": "🧑‍🏫 Protect against MitM",
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/protect-against-mitm.md"
+          }
+        }
+      ],
+      "id": "demo-mdsrrag4-ebxq",
+      "description": "Easily protect yourself against these sorts off attackts"
+    },
+    {
       "title": "🧑‍🏫 Outro",
       "description": "What did we learn, thank you sponsors, ask me anything at 16:30, please leave feedback",
       "steps": [
@@ -170,11 +184,25 @@
       ]
     },
     {
-      "title": "✔️ Reset Theme",
+      "title": "🏁 Reset VS Code",
       "description": "Return the editor theme to its default state to clean up after the demo.",
       "steps": [
         {
           "action": "unsetTheme"
+        },
+        {
+          "action": "setSetting",
+          "setting": {
+            "key": "workbench.statusBar.visible",
+            "value": true
+          }
+        },
+        {
+          "action": "setSetting",
+          "setting": {
+            "key": "workbench.activityBar.location",
+            "value": "default"
+          }
         }
       ]
     }

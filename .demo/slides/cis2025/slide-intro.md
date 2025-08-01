@@ -8,7 +8,7 @@ title: Hack you protected API for integration testing 🧪
 &nbsp;
 
 ---
-layout: intro
+layout: section
 transition: slideUp
 title: Hack you protected API for integration testing 🧪
 ---
@@ -33,12 +33,12 @@ title: Stephan van Rooij
 - Open Source contributor 🌍
 
 ---
-layout: default
+layout: intro
 transition: slideUp
 title: What will we do? 📅
 ---
 
-# What will we do? 📅
+# Agenda
 
 1. JWT Authentication workings
 2. Show demo api

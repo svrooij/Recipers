@@ -4,10 +4,11 @@ layout: section
 title: Require Authentication
 ---
 
-# Test authentication ⚠️
+# Test authentication 🔑🔐
 
 ---
 layout: image-left
+transition: slideUp
 image: .demo/slides/pexels-saksham-choudhary-109710-2036656.jpg
 title: Require Authentication
 ---
@@ -23,11 +24,22 @@ Just a safeguard to ensure that no endpoints are left open unintentionally.
 - A01-2021 **Broken Access Control**
 
 <dt-show>
-  ## ❌ OWASP Top 10 ❌
+  <h2>❌ OWASP Top 10 - 2021! ❌</h2>
 </dt-show>
+
+---
+layout: section
+transition: slideUp
+---
+
+# All endpoints protected ✔️
+
+## How do we test without disabling authentication?
 
 ---
 layout: section
 ---
 
-# Demo time 🧪
+# Are all endpoints protected?
+
+## 🧑‍💻 Demo Time 🧑‍💻

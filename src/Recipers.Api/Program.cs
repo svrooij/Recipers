@@ -65,6 +65,12 @@ if (app.Environment.IsDevelopment())
 
         });
         options.AddPreferredSecuritySchemes("jwt");
+        options.PersistentAuthentication = true;
+        options.TagSorter = TagSorter.Alpha;
+        options.Title = "Recipers API 📄 with Scalar";
+        options.HideClientButton = true;
+        options.EnabledTargets = [ScalarTarget.PowerShell, ScalarTarget.CSharp, ScalarTarget.Http, ScalarTarget.Shell];
+        // options.EnabledClients = [ScalarClient.HttpClient];
     });
 }
 
@@ -74,7 +80,7 @@ app.UseAuthorization();
 
 // Map the Weather API endpoints
 app.MapGet("/", () => "Welcome to the Recipers API! Documentation is available at /scalar/").ExcludeFromDescription();
-app.MapWeatherApi();
 app.MapRecipeApi();
+app.MapWeatherApi();
 
 app.Run();

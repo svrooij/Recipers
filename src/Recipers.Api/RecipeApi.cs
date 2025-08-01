@@ -9,6 +9,7 @@ public static class RecipeApi
   {
     var group = app
       .MapGroup("/recipes")
+      .WithTags("Recipes")
       //.RequireAuthorization()
       ;
 
