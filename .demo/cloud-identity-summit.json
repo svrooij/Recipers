@@ -5,76 +5,64 @@
   "version": 2,
   "demos": [
     {
-      "title": "Introduction Slide",
-      "description": "Start the slide deck",
+      "title": "🧑‍🏫 Intro",
+      "description": "Starting slides",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Dark Modern"
-        },
-        {
-          "action": "openSlide",
-          "path": ".demo/slides/cis2025/slide-intro.md"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/cis2025/slide-intro.md"
+          }
         }
       ]
     },
     {
-      "title": "JWT Authentication",
+      "title": "🧑‍🏫 JWT Authentication",
       "description": "Explaning JWT Authentication (in dotnet)",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Dark Modern"
-        },
-        {
-          "action": "openSlide",
-          "path": ".demo/slides/jwt.md"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/jwt.md"
+          }
         }
       ]
     },
     {
-      "title": "Program.cs",
+      "title": "🧑‍💻 Program.cs",
       "description": "Show how JWT Authentication is configured in the Program.cs file",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Light Modern"
-        },
-        {
-          "action": "open",
-          "path": "src\\Recipers.Api\\Program.cs"
-        },
-        {
-          "action": "executeVSCodeCommand",
-          "command": "workbench.files.action.showActiveFileInExplorer"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/Program.cs"
+          }
         },
         {
           "action": "highlight",
-          "path": "src\\Recipers.Api\\Program.cs",
+          "path": "src/Recipers.Api/Program.cs",
           "startPlaceholder": "// ------------------- Authentication and Authorization -------------------",
           "endPlaceholder": "// ------------------- End Authentication and Authorization -------------------"
         }
       ]
     },
     {
-      "title": "appsettings.json",
+      "title": "🧑‍💻 appsettings.json",
       "description": "Show how JWT Authentication is configured in the appsettings.json file",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Light Modern"
-        },
-        {
-          "action": "open",
-          "path": "src\\Recipers.Api\\appsettings.json"
-        },
-        {
-          "action": "executeVSCodeCommand",
-          "command": "workbench.files.action.showActiveFileInExplorer"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/appsettings.json"
+          }
         },
         {
           "action": "highlight",
-          "path": ".\\src\\Recipers.Api\\appsettings.json",
+          "path": "src/Recipers.Api/appsettings.json",
           "position": "9:17",
           "highlightWholeLine": true
         }
@@ -82,11 +70,14 @@
     },
     {
       "id": "demo-mdruswqm-luy4",
-      "title": "Show API",
+      "title": "🧑‍💻 Show API",
       "steps": [
         {
-          "action": "open",
-          "path": "src\\Recipers.Api\\Program.cs"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/Program.cs"
+          }
         },
         {
           "action": "executeVSCodeCommand",
@@ -96,39 +87,33 @@
       "description": "Start the API and show what we are talking about. This will start the process and launch an external browser"
     },
     {
-      "title": "Test for failures",
-      "description": "If you enable authentication, be sure to validate that all endpoints in fact require authentication",
+      "title": "🧑‍🏫 Test failures ❌",
+      "description": "Use automation to test for human error.\nForgetting `.RequireAuthentication()` on a single endpoint is easy.",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Dark Modern"
-        },
-        {
-          "action": "openSlide",
-          "path": ".demo/slides/require-auth.md"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/require-auth.md"
+          }
         }
       ],
       "id": "demo-mdrv738n-8trd"
     },
     {
-      "title": "Authentication test",
+      "title": "🧑‍💻 Authentication test",
       "description": "How to automatically test for authentication on all endpoints",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Light Modern"
-        },
-        {
-          "action": "open",
-          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs"
-        },
-        {
-          "action": "executeVSCodeCommand",
-          "command": "workbench.files.action.showActiveFileInExplorer"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs"
+          }
         },
         {
           "action": "highlight",
-          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs",
+          "path": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs",
           "highlightWholeLine": true,
           "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
           "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
@@ -137,39 +122,33 @@
       "id": "demo-mdrvve1i-zfqp"
     },
     {
-      "title": "Inject signing keys",
+      "title": "🧑‍🏫 Inject signing keys",
       "description": "How are we going to trick the api into trusting our fake tokens?",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Dark Modern"
-        },
-        {
-          "action": "openSlide",
-          "path": ".demo/slides/identity-proxy.md"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/identity-proxy.md"
+          }
         }
       ],
       "id": "demo-mdrxfed2-702q"
     },
     {
-      "title": "Use Identity Proxy",
+      "title": "🧑‍💻 Use Identity Proxy",
       "description": "How to use identity proxy",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Light Modern"
-        },
-        {
-          "action": "open",
-          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs"
-        },
-        {
-          "action": "executeVSCodeCommand",
-          "command": "workbench.files.action.showActiveFileInExplorer"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs"
+          }
         },
         {
           "action": "highlight",
-          "path": "tests\\Recipers.Api.Tests\\MinimalApiEndpointsValidator.cs",
+          "path": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs",
           "highlightWholeLine": true,
           "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
           "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
@@ -178,21 +157,20 @@
       "id": "demo-mdrxi4me-u5rd"
     },
     {
-      "title": "Outro",
+      "title": "🧑‍🏫 Outro",
       "description": "What did we learn, thank you sponsors, ask me anything at 16:30, please leave feedback",
       "steps": [
         {
-          "action": "setTheme",
-          "theme": "Default Dark Modern"
-        },
-        {
-          "action": "openSlide",
-          "path": ".demo\\slides\\cis2025\\slides-end.md"
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/cis2025/slides-end.md"
+          }
         }
       ]
     },
     {
-      "title": "Reset Theme",
+      "title": "✔️ Reset Theme",
       "description": "Return the editor theme to its default state to clean up after the demo.",
       "steps": [
         {

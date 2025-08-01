@@ -5,6 +5,15 @@ using Testcontainers.IdentityProxy;
 
 namespace Recipers.Api.Tests.Helpers;
 
+/// <summary>
+/// RecipeApiFactoryWithIdentityProxy is a custom WebApplicationFactory that sets up an ASP.NET Core application
+/// for testing with an Identity Proxy. It allows for integration tests that require authentication.
+/// </summary>
+/// <remarks>
+/// Testcontainers are used to run the Identity Proxy in a Docker container.
+/// The Identity Proxy acts as an authentication server, allowing tests to obtain JWT tokens.
+/// </remarks>
+/// <seealso cref="WebApplicationFactory{TEntryPoint}"/>
 public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMarker>, IAsyncLifetime
 {
     // We need the authority up-front, so this is the only thing we cannot change dynamically
@@ -13,7 +22,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
         .WithImage("ghcr.io/svrooij/identityproxy:v0.1.4")
         .WithAuthority(AUTHORITY)
         .Build();
-    
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
@@ -36,16 +45,32 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
         });
     }
 
+    /// <summary>
+    /// Asynchronously retrieves a token from the Identity Proxy.
+    /// This method is used to obtain a token for testing purposes.
+    /// </summary>
+    /// <param name="tokenRequest">What claims do you want in the token?</param>
+    /// <returns><see cref="TokenResult"/> with AccessToken and ExpiresIn</returns>
     internal async Task<TokenResult?> GetTokenAsync(TokenRequest tokenRequest)
     {
         return await _identityProxyContainer.GetTokenAsync(tokenRequest);
     }
 
+    /// <summary>
+    /// Asynchronously initializes the RecipeApiFactoryWithIdentityProxy, which calls the testcontainer library to start a docker container.
+    /// </summary>
+    /// <remarks>Be sure docker is running before calling this method.</remarks>
+    /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
     public async ValueTask InitializeAsync()
     {
         await _identityProxyContainer.StartAsync();
     }
 
+    /// <summary>
+    /// Asynchronously disposes of the RecipeApiFactoryWithIdentityProxy, which stops the docker container.
+    /// This method is called after all tests have run.
+    /// </summary>
+    /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
     public override async ValueTask DisposeAsync()
     {
         await _identityProxyContainer.DisposeAsync();
