@@ -23,7 +23,8 @@ public class RecipeTests
   {
     // Arrange: Get a valid token
     var token = await _factory.GetTokenAsync(TokenHelper.CreateTokenRequestForStephan());
-    token.Should().NotBeNull(); // This should NEVER happen, if it does, the test setup is broken
+    token.Should().NotBeNull();
+    // Arrange: Create a request with the token
     var request = new HttpRequestMessage(HttpMethod.Get, "/recipes");
     request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token!.AccessToken);
 

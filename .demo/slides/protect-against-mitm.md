@@ -61,7 +61,11 @@ transition: slideLeft
 
 # Protect against MITM attacks 🛡  
 
-## Block https proxies 💣
+## Block https proxies 🏆
+
+a.k.a. "Certificate pinning"
+
+> Force the app to only accept certificate chains with a root certificate that has a specific thumbprint.
 
 See: https://svrooij.io/2024/02/22/nuke-man-middle-attack/
 

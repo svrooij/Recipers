@@ -117,6 +117,13 @@
           "highlightWholeLine": true,
           "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
           "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
+        },
+        {
+          "action": "waitForInput"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "testing.debugCurrentFile"
         }
       ],
       "id": "demo-mdrvve1i-zfqp"
@@ -136,25 +143,45 @@
       "id": "demo-mdrxfed2-702q"
     },
     {
-      "title": "🧑‍💻 Use Identity Proxy",
-      "description": "How to use identity proxy",
+      "title": "🧑‍💻 IWebApiFactory",
+      "description": "Automatically start IdentityProxy and configure the api to use it",
       "steps": [
         {
           "action": "snippet",
           "contentPath": ".demo/.snippets/show-code.json",
           "args": {
-            "FILE_PATH": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs"
+            "FILE_PATH": "tests/Recipers.Api.Tests/Helpers/RecipeApiFactoryWithIdentityProxy.cs"
+          }
+        }
+      ],
+      "id": "demo-mdrxi4me-u5rd"
+    },
+    {
+      "title": "🧑‍💻 Recipe tests",
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "tests/Recipers.Api.Tests/ControllerTests/RecipeTests.cs"
           }
         },
         {
           "action": "highlight",
-          "path": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs",
-          "highlightWholeLine": true,
-          "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
-          "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
+          "path": "tests/Recipers.Api.Tests/ControllerTests/RecipeTests.cs",
+          "startPlaceholder": "// Arrange: Get a valid token",
+          "endPlaceholder": "token.Should().NotBeNull();"
+        },
+        {
+          "action": "waitForInput"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "testing.debugCurrentFile"
         }
       ],
-      "id": "demo-mdrxi4me-u5rd"
+      "id": "demo-mdsth03z-3oh0",
+      "description": "Get a token and actually execute the endpoint with authentication enabled"
     },
     {
       "title": "🧑‍🏫 Protect against MitM",

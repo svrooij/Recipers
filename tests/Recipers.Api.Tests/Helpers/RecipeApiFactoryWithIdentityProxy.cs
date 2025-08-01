@@ -18,6 +18,8 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
 {
     // We need the authority up-front, so this is the only thing we cannot change dynamically
     private const string AUTHORITY = "https://login.microsoftonline.com/common/v2.0";
+
+    // 👇 1️⃣ Setup identity proxy, see https://github.com/svrooij/identityproxy
     private readonly IdentityProxyContainer _identityProxyContainer = new IdentityProxyBuilder()
         .WithImage("ghcr.io/svrooij/identityproxy:v0.1.4")
         .WithAuthority(AUTHORITY)
@@ -27,7 +29,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
     {
         builder.UseEnvironment("Testing");
 
-        // Change the Authority to the Identity Proxy
+        // 👇 2️⃣ Override the JWT:Authority with the value from the proxy
         builder.UseSetting("JWT:Authority", _identityProxyContainer.GetAuthority());
         builder.UseSetting("JWT:RequireHttpsMetadata", "false");
 
@@ -45,6 +47,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
         });
     }
 
+    // 👇3️⃣ Expose the IdentityProxy GetTokenAsync method
     /// <summary>
     /// Asynchronously retrieves a token from the Identity Proxy.
     /// This method is used to obtain a token for testing purposes.
@@ -56,6 +59,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
         return await _identityProxyContainer.GetTokenAsync(tokenRequest);
     }
 
+    // 👇4️⃣ Make sure the container is started on initialize
     /// <summary>
     /// Asynchronously initializes the RecipeApiFactoryWithIdentityProxy, which calls the testcontainer library to start a docker container.
     /// </summary>
@@ -66,6 +70,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
         await _identityProxyContainer.StartAsync();
     }
 
+    // 👇5️⃣ Dispose of the container after all tests have run
     /// <summary>
     /// Asynchronously disposes of the RecipeApiFactoryWithIdentityProxy, which stops the docker container.
     /// This method is called after all tests have run.
