@@ -258,6 +258,13 @@
         {
           "action": "unsetTheme"
         },
+          {
+    "action": "setSetting",
+    "setting": {
+      "key": "window.zoomLevel",
+      "value": 1.0
+    }
+  },
         {
           "action": "setSetting",
           "setting": {

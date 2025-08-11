@@ -25,6 +25,13 @@
       "value": "hidden"
     }
   },
+    {
+    "action": "setSetting",
+    "setting": {
+      "key": "window.zoomLevel",
+      "value": 1.0
+    }
+  },
   {
     "action": "openSlide",
     "path": "{SLIDES_FILE}"

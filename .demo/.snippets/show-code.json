@@ -18,6 +18,13 @@
     }
   },
   {
+    "action": "setSetting",
+    "setting": {
+      "key": "window.zoomLevel",
+      "value": 2.5
+    }
+  },
+  {
     "action": "executeVSCodeCommand",
     "command": "workbench.action.toggleSidebarVisibility"
   },

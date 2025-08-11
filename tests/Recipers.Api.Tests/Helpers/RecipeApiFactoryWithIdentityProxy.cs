@@ -21,7 +21,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
 
     // 👇 1️⃣ Setup identity proxy, see https://github.com/svrooij/identityproxy
     private readonly IdentityProxyContainer _identityProxyContainer = new IdentityProxyBuilder()
-        .WithImage("ghcr.io/svrooij/identityproxy:v0.1.4")
+        .WithImage("ghcr.io/svrooij/identityproxy:v0.2.0")
         .WithAuthority(AUTHORITY)
         .Build();
 
