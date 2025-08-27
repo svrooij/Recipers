@@ -12,6 +12,15 @@
       },
       "steps": [
         {
+          "action": "executeTerminalCommand",
+          "command": "start  \"C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe\"",
+          "terminalId": "docker"
+        },
+        {
+          "action": "closeTerminal",
+          "terminalId": "docker"
+        },
+        {
           "action": "snippet",
           "contentPath": ".demo/.snippets/show-slide.json",
           "args": {
@@ -258,13 +267,13 @@
         {
           "action": "unsetTheme"
         },
-          {
-    "action": "setSetting",
-    "setting": {
-      "key": "window.zoomLevel",
-      "value": 1.0
-    }
-  },
+        {
+          "action": "setSetting",
+          "setting": {
+            "key": "window.zoomLevel",
+            "value": 1
+          }
+        },
         {
           "action": "setSetting",
           "setting": {
