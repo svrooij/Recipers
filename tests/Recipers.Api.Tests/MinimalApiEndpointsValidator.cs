@@ -58,21 +58,28 @@ public class MinimalApiEndpointsValidator
         }
     }
 
+    // ------------------------- Authentication Tests -------------------------
     [Theory]
     [MemberData(nameof(GetAllEndpointsUsingOpenApiSpec))]
     public async Task Endpoint_should_return_statuscode_401_without_valid_token(string path, string method)
     {
-        var req = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), path.Replace("{id}", Guid.NewGuid().ToString()));
+        // Take the path and method from the OpenAPI spec,
+        // replace any {id} placeholders with a random GUID (all ID's are GUIDs in this API) change to your situation,
+        // undefined routes return 404, if you did not set up RequireAuthorization on the entire API.
+        var urlPath = path.Replace("{id}", Guid.NewGuid().ToString());
+        var req = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), urlPath);
         var result = await _client.SendAsync(req, TestContext.Current.CancellationToken);
         result.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{method.ToUpper()} {path}` should require authorization");
 
         // Simulate a request with a faulty token
-        var req2 = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), path.Replace("{id}", Guid.NewGuid().ToString()));
+        var req2 = new HttpRequestMessage(new HttpMethod(method.ToUpperInvariant()), urlPath);
         req2.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "this_is_not.a_valid.token");
         var result2 = await _client.SendAsync(req2, TestContext.Current.CancellationToken);
         result2.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{method.ToUpper()} {path}` should return 401 with a faulty token");
     }
+    // ------------------------- End Authentication Tests ---------------------
 }
+
 
 
 [CollectionDefinition(MinimalApiEndpointsValidator.CollectionName)]

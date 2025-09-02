@@ -1,0 +1,40 @@
+[
+  {
+    "action": "setTheme",
+    "theme": "Default Light Modern"
+  },
+  {
+    "action": "setSetting",
+    "setting": {
+      "key": "workbench.statusBar.visible",
+      "value": null
+    }
+  },
+  {
+    "action": "setSetting",
+    "setting": {
+      "key": "workbench.activityBar.location",
+      "value": null
+    }
+  },
+  {
+    "action": "setSetting",
+    "setting": {
+      "key": "window.zoomLevel",
+      "value": 2.5
+    }
+  },
+  {
+    "action": "executeVSCodeCommand",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  
+  {
+    "action": "open",
+    "path": "{FILE_PATH}"
+  },
+  {
+    "action": "executeVSCodeCommand",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  }
+]

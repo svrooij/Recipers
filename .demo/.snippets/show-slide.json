@@ -1,0 +1,39 @@
+[
+  {
+    "action": "setTheme",
+    "theme": "Default Dark Modern"
+  },
+  {
+    "action": "executeVSCodeCommand",
+    "command": "workbench.action.closeSidebar"
+  },
+  {
+    "action": "executeVSCodeCommand",
+    "command": "workbench.action.closePanel"
+  },
+  {
+    "action": "setSetting",
+    "setting": {
+      "key": "workbench.statusBar.visible",
+      "value": false
+    }
+  },
+  {
+    "action": "setSetting",
+    "setting": {
+      "key": "workbench.activityBar.location",
+      "value": "hidden"
+    }
+  },
+    {
+    "action": "setSetting",
+    "setting": {
+      "key": "window.zoomLevel",
+      "value": 1.0
+    }
+  },
+  {
+    "action": "openSlide",
+    "path": "{SLIDES_FILE}"
+  }
+]
