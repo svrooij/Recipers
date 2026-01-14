@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using System.Security.Claims;
-
+using Microsoft.AspNetCore.OpenApi;
 namespace Recipers.Api;
 
 public static class RecipeApi
@@ -17,13 +17,11 @@ public static class RecipeApi
       Results.Ok(await service.GetRecipesAsync()))
       .WithName("GetRecipes")
       .Produces<IEnumerable<Recipe>>(StatusCodes.Status200OK)
-      .WithOpenApi(operation =>
+      .AddOpenApiOperationTransformer((operation, _, _) =>
       {
         operation.Summary = "Get all recipes";
         operation.Description = "Returns all public recipes and private recipes owned by the user.";
-        operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-
-        return operation;
+        return Task.CompletedTask;
       })
       .RequireAuthorization()
       ;
@@ -36,12 +34,11 @@ public static class RecipeApi
     .WithName("GetRecipe")
     .Produces<Recipe>(StatusCodes.Status200OK)
     .ProducesProblem(StatusCodes.Status404NotFound)
-    .WithOpenApi(operation =>
+    .AddOpenApiOperationTransformer((operation, _, _) =>
     {
       operation.Summary = "Get a recipe by id";
       operation.Description = "Returns a recipe if it is public or owned by the user.";
-      operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-      return operation;
+        return Task.CompletedTask;
     })
       .RequireAuthorization()
       ;
@@ -51,12 +48,11 @@ public static class RecipeApi
       .WithName("CreateRecipe")
       .Produces<Recipe>(StatusCodes.Status200OK)
       .ProducesProblem(StatusCodes.Status400BadRequest)
-      .WithOpenApi(operation =>
+      .AddOpenApiOperationTransformer((operation, _, _) =>
       {
         operation.Summary = "Create a new recipe";
         operation.Description = "Creates a new recipe. The UserId is set from the authenticated user's oid claim.";
-        operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-        return operation;
+        return Task.CompletedTask;
       })
       .RequireAuthorization()
       ;
@@ -69,12 +65,11 @@ public static class RecipeApi
     .WithName("UpdateRecipe")
     .Produces<Recipe>(StatusCodes.Status200OK)
     .ProducesProblem(StatusCodes.Status404NotFound)
-    .WithOpenApi(operation =>
+    .AddOpenApiOperationTransformer((operation, _, _) =>
     {
       operation.Summary = "Update a recipe";
       operation.Description = "Updates a recipe if it is public or owned by the user. The UserId is set from the authenticated user's oid claim.";
-      operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-      return operation;
+      return Task.CompletedTask;
     })
     .RequireAuthorization()
     ;
@@ -84,12 +79,11 @@ public static class RecipeApi
       .WithName("DeleteRecipe")
       .Produces(StatusCodes.Status204NoContent)
       .ProducesProblem(StatusCodes.Status404NotFound)
-      .WithOpenApi(operation =>
+      .AddOpenApiOperationTransformer((operation, _, _) =>
       {
         operation.Summary = "Delete a recipe";
         operation.Description = "Deletes a recipe if it is public or owned by the user.";
-        operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-        return operation;
+        return Task.CompletedTask;
       })
       //.RequireAuthorization()
       ;

@@ -1,6 +1,6 @@
 # Recipers
 
-A simple recipe management application built with dotnet 9 and some modern frontend technologies. Showcasing using [IdentityProxy](https://github.com/svrooij/identityproxy) for running integration tests without disabling authentication.
+A simple recipe management application built with dotnet 10 and some modern frontend technologies. Showcasing using [IdentityProxy](https://github.com/svrooij/identityproxy) for running integration tests without disabling authentication.
 
 ## Demo-only ⚠️
 

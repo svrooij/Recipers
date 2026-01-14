@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.OpenApi;
 
 namespace Recipers.Api;
 
@@ -27,12 +27,11 @@ public static class WeatherApi
         .RequireAuthorization()
         .Produces<IEnumerable<WeatherForecast>>(StatusCodes.Status200OK)
         .WithTags("Weather")
-      .WithOpenApi(operation =>
+      .AddOpenApiOperationTransformer((operation, _, _) =>
       {
           operation.Summary = "Get weather forecast";
           operation.Description = "Returns a 5-day weather forecast with random temperatures and summaries.";
-          operation.Security.AddScopes("jwt", "api://c8ccec6e-9f74-4de1-a6cd-18e665c3e685/user-impersonation");
-          return operation;
+          return Task.CompletedTask;
       });
     }
 

@@ -60,11 +60,13 @@ if (app.Environment.IsDevelopment())
             {
                 flows.AuthorizationCode = new AuthorizationCodeFlow();
                 builder.Configuration.Bind("ScalarOAuthCodeFlow", flows.AuthorizationCode);
+                //flows.AuthorizationCode.SelectedScopes = auth.DefaultScopes;
                 flows.AuthorizationCode.Pkce = Pkce.Sha256; // Set PKCE
             });
 
         });
         options.AddPreferredSecuritySchemes("jwt");
+
         options.PersistentAuthentication = true;
         options.TagSorter = TagSorter.Alpha;
         options.Title = "Recipers API 📄 with Scalar";
