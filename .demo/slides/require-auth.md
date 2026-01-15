@@ -21,10 +21,10 @@ Just a safeguard to ensure that no endpoints are left open unintentionally.
 
 - Automated tests
 - Run in CI/CD
-- A01-2021 **Broken Access Control**
+- A01-2025 **Broken Access Control**
 
 <dt-show>
-  <h2>❌ OWASP Top 10 - 2021! ❌</h2>
+  <h2>❌ OWASP Top 10 - 2021 & 2025! ❌</h2>
 </dt-show>
 
 ---

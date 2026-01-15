@@ -1,0 +1,433 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "Dotnet zuid 20-01",
+  "description": "Hack your API for integration testing Dotnet zuid 2026-01-15",
+  "version": 2,
+  "demos": [
+    {
+      "title": "🧑‍🏫 Intro",
+      "description": "Starting slides",
+      "icons": {
+        "start": "device-desktop"
+      },
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "start  \"C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe\"",
+          "terminalId": "docker"
+        },
+        {
+          "action": "closeTerminal",
+          "terminalId": "docker"
+        },
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/cis2025/slide-intro.md"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-mkfegdbi-4pf3",
+      "title": "🙋 Session time",
+      "steps": [
+        {
+          "action": "startEngageTimeSession"
+        },
+        {
+          "action": "showEngageTimeSession"
+        }
+      ],
+      "icons": {
+        "start": "feedback",
+        "end": ""
+      },
+      "description": "An interactive session with some polls during the presentation, please join in"
+    },
+    {
+      "id": "demo-mkfeqw3u-jsck",
+      "title": "❓Question 1",
+      "steps": [
+        {
+          "action": "showEngageTimePoll",
+          "startOnOpen": true,
+          "pollId": "e5duad"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 60000
+        },
+        {
+          "action": "closeEngageTimePoll",
+          "pollId": "e5duad"
+        }
+      ],
+      "icons": {
+        "start": "question",
+        "end": ""
+      },
+      "description": "How much do you know about API Security in dotnet?"
+    },
+    {
+      "id": "demo-mkfeiyck-vbwp",
+      "title": "❓Question 2",
+      "steps": [
+        {
+          "action": "showEngageTimePoll",
+          "pollId": "oqt2lv",
+          "startOnOpen": true
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 60000
+        },
+        {
+          "action": "closeEngageTimePoll",
+          "pollId": "oqt2lv"
+        }
+      ],
+      "icons": {
+        "start": "question",
+        "end": ""
+      },
+      "description": "Where does .... stand for?"
+    },
+    {
+      "title": "🧑‍🏫 JWT Authentication",
+      "description": "Explaning JWT Authentication (in dotnet)",
+      "icons": {
+        "start": "mortar-board"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/jwt.md"
+          }
+        }
+      ]
+    },
+    {
+      "title": "🧑‍💻 Program.cs",
+      "description": "Show how JWT Authentication is configured in the Program.cs file",
+      "icons": {
+        "start": "code"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/Program.cs"
+          }
+        },
+        {
+          "action": "highlight",
+          "path": "src/Recipers.Api/Program.cs",
+          "startPlaceholder": "// ------------------- Authentication and Authorization -------------------",
+          "endPlaceholder": "// ------------------- End Authentication and Authorization -------------------"
+        }
+      ]
+    },
+    {
+      "title": "🧑‍💻 appsettings.json",
+      "description": "Show how JWT Authentication is configured in the appsettings.json file",
+      "icons": {
+        "start": "code"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/appsettings.json"
+          }
+        },
+        {
+          "action": "highlight",
+          "path": "src/Recipers.Api/appsettings.json",
+          "position": "9:17",
+          "highlightWholeLine": true
+        }
+      ]
+    },
+    {
+      "id": "demo-mdruswqm-luy4",
+      "title": "🧑‍💻 Show API",
+      "icons": {
+        "start": "run-all"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/Program.cs"
+          }
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.debug.start"
+        }
+      ],
+      "description": "Start the API and show what we are talking about. This will start the process and launch an external browser"
+    },
+    {
+      "title": "🧑‍🏫 Test failures ❌",
+      "description": "Use automation to test for human error. Forgetting `.RequireAuthentication()` on a single endpoint is easy.",
+      "icons": {
+        "start": "device-desktop"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/require-auth.md"
+          }
+        }
+      ],
+      "id": "demo-mdrv738n-8trd"
+    },
+    {
+      "title": "🧑‍💻 401 on all endpoints",
+      "description": "Load OpenAPI spec, send request to all endpoints, expect 401",
+      "icons": {
+        "start": "microscope"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs"
+          }
+        },
+        {
+          "action": "highlight",
+          "path": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs",
+          "highlightWholeLine": true,
+          "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
+          "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
+        },
+        {
+          "action": "waitForInput",
+          "message": "Run authentication tests?"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "testing.debugCurrentFile"
+        }
+      ],
+      "id": "demo-mdrvve1i-zfqp"
+    },
+    {
+      "title": "🧑‍🏫 Inject signing keys",
+      "icons": {
+        "start": "light-bulb"
+      },
+      "description": "How are we going to trick the api into trusting our fake tokens?",
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/identity-proxy.md"
+          }
+        }
+      ],
+      "id": "demo-mdrxfed2-702q"
+    },
+    {
+      "title": "🧑‍💻 IWebApiFactory",
+      "description": "Automatically start IdentityProxy and configure the api to use it",
+      "icons": {
+        "start": "code"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "tests/Recipers.Api.Tests/Helpers/RecipeApiFactoryWithIdentityProxy.cs"
+          }
+        }
+      ],
+      "id": "demo-mdrxi4me-u5rd"
+    },
+    {
+      "title": "🧑‍💻 Recipe tests",
+      "icons": {
+        "start": "microscope"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "tests/Recipers.Api.Tests/ControllerTests/RecipeTests.cs"
+          }
+        },
+        {
+          "action": "highlight",
+          "path": "tests/Recipers.Api.Tests/ControllerTests/RecipeTests.cs",
+          "startPlaceholder": "// Arrange: Get a valid token",
+          "endPlaceholder": "token.Should().NotBeNull();"
+        },
+        {
+          "action": "waitForInput",
+          "message": "Want to debug the Recipe tests?"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "testing.debugCurrentFile"
+        }
+      ],
+      "id": "demo-mdsth03z-3oh0",
+      "description": "Get a token and actually execute the endpoint with authentication enabled"
+    },
+    {
+      "title": "🧑‍🏫 Protect against MitM",
+      "icons": {
+        "start": "shield"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/protect-against-mitm.md"
+          }
+        }
+      ],
+      "id": "demo-mdsrrag4-ebxq",
+      "description": "Easily protect yourself against these sorts off attackts"
+    },
+    {
+      "title": "🧑‍💻 404 vs 401",
+      "icons": {
+        "start": "alert"
+      },
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-code.json",
+          "args": {
+            "FILE_PATH": "src/Recipers.Api/Program.cs"
+          }
+        },
+        {
+          "action": "highlight",
+          "path": "src/Recipers.Api/Program.cs",
+          "startPlaceholder": "// Unauthenticated users",
+          "endPlaceholder": "// End of fallback mapping"
+        }
+      ],
+      "id": "demo-mkfeddbn-8hex",
+      "description": "Should unauthenticated requests get 404 or 401?"
+    },
+    {
+      "id": "demo-mkfg8mlp-zddm",
+      "title": "❓Question 3",
+      "steps": [
+        {
+          "action": "showEngageTimePoll",
+          "startOnOpen": true,
+          "pollId": "9d95xi"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 60000
+        },
+        {
+          "action": "closeEngageTimePoll",
+          "pollId": "9d95xi"
+        }
+      ],
+      "icons": {
+        "start": "question",
+        "end": ""
+      },
+      "description": "What error code for other users' data?"
+    },
+    {
+      "id": "demo-mkfevyas-dmzh",
+      "title": "❓Question 4",
+      "steps": [
+        {
+          "action": "showEngageTimePoll",
+          "startOnOpen": true,
+          "pollId": "3ow6p7"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 60000
+        },
+        {
+          "action": "closeEngageTimePoll",
+          "pollId": "3ow6p7"
+        }
+      ],
+      "icons": {
+        "start": "question",
+        "end": ""
+      },
+      "description": "Will you be using identity proxy for your next project?"
+    },
+    {
+      "title": "🧑‍🏫 Outro",
+      "icons": {
+        "start": "device-desktop"
+      },
+      "description": "Please leave feedback",
+      "steps": [
+        {
+          "action": "snippet",
+          "contentPath": ".demo/.snippets/show-slide.json",
+          "args": {
+            "SLIDES_FILE": ".demo/slides/cis2025/slides-end.md"
+          }
+        }
+      ]
+    },
+    {
+      "title": "🏁 Reset VS Code",
+      "icons": {
+        "start": "wrench"
+      },
+      "description": "Return the editor theme to its default state to clean up after the demo.",
+      "steps": [
+        {
+          "action": "unsetTheme"
+        },
+        {
+          "action": "setSetting",
+          "setting": {
+            "key": "window.zoomLevel",
+            "value": 1
+          }
+        },
+        {
+          "action": "setSetting",
+          "setting": {
+            "key": "workbench.statusBar.visible",
+            "value": true
+          }
+        },
+        {
+          "action": "setSetting",
+          "setting": {
+            "key": "workbench.activityBar.location",
+            "value": "default"
+          }
+        }
+      ]
+    }
+  ],
+  "engageTime": {
+    "sessionId": "ttedkw"
+  }
+}

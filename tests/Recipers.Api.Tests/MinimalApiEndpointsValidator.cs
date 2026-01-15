@@ -32,6 +32,14 @@ public class MinimalApiEndpointsValidator
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
+    [Fact]
+    public async Task NotExisting_endpoint_should_return_statuscode_401_without_token()
+    {
+        // Test that endpoints require authorization
+        var response = await _client.GetAsync("/notexisting", TestContext.Current.CancellationToken);
+        response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+    }
+
     /// <summary>
     /// Retrieves all endpoints from the OpenAPI documentation.
     /// This method fetches the OpenAPI JSON document, parses it, and yields each endpoint

@@ -60,7 +60,6 @@ if (app.Environment.IsDevelopment())
             {
                 flows.AuthorizationCode = new AuthorizationCodeFlow();
                 builder.Configuration.Bind("ScalarOAuthCodeFlow", flows.AuthorizationCode);
-                //flows.AuthorizationCode.SelectedScopes = auth.DefaultScopes;
                 flows.AuthorizationCode.Pkce = Pkce.Sha256; // Set PKCE
             });
 
@@ -84,5 +83,19 @@ app.UseAuthorization();
 app.MapGet("/", () => "Welcome to the Recipers API! Documentation is available at /scalar/").ExcludeFromDescription();
 app.MapRecipeApi();
 app.MapWeatherApi();
+
+// Unauthenticated users get a 401, authenticated users get a 404 for unknown endpoints
+app.MapFallback((HttpContext context) =>
+{
+    if(context.User.Identity?.IsAuthenticated ?? false)
+    {
+        return Results.Problem(statusCode: 404, title: "Endpoint Not Found", detail: "The requested endpoint does not exist.");
+    }
+    else
+    {
+        return Results.Unauthorized();
+    }
+}).ExcludeFromDescription();
+// End of fallback mapping
 
 app.Run();

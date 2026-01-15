@@ -1,13 +1,5 @@
 ---
 theme: quantum
-layout: image
-image: .demo/slides/cis2025/slide-intro.png
-title: Hack you protected API for integration testing 🧪
----
-
-&nbsp;
-
----
 layout: section
 transition: slideUp
 title: Hack you protected API for integration testing 🧪
@@ -16,7 +8,6 @@ title: Hack you protected API for integration testing 🧪
 # Hack you protected API for integration testing 🧪
 
 Broken authentication and authorization is a common issue in API development.
-
 
 ---
 layout: image-right

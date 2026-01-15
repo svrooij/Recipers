@@ -1,6 +1,6 @@
 {
   "demoTime.defaultFileType": "json",
   "workbench.editor.showTabs": "multiple",
-  "workbench.statusBar.visible": true,
-  "workbench.activityBar.location": "default"
+  "workbench.colorTheme": "Default Light Modern",
+  "window.zoomLevel": 2.5
 }
