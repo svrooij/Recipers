@@ -23,6 +23,7 @@ public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMa
     private readonly IdentityProxyContainer _identityProxyContainer = new IdentityProxyBuilder()
         .WithImage("ghcr.io/svrooij/identityproxy:v0.2.0")
         .WithAuthority(AUTHORITY)
+        .WithLogger(Microsoft.Extensions.Logging.Abstractions.NullLogger.Instance) // No logging from docker container
         .Build();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
