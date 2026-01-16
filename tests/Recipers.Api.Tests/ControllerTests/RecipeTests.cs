@@ -9,10 +9,10 @@ namespace Recipers.Api.Tests.ControllerTests;
 public class RecipeTests
 {
   internal const string CollectionName = "ControllerTests";
-  private readonly RecipeApiFactoryWithIdentityProxy _factory;
+  private readonly XUnitRecipeApiFactoryWithIdentityProxy _factory;
   private readonly HttpClient _client;
 
-  public RecipeTests(RecipeApiFactoryWithIdentityProxy factory)
+  public RecipeTests(XUnitRecipeApiFactoryWithIdentityProxy factory)
   {
     _factory = factory;
     _client = factory.CreateClient();
@@ -100,7 +100,7 @@ public class RecipeTests
 }
 
 [CollectionDefinition(RecipeTests.CollectionName)]
-public class ControllerCollection : ICollectionFixture<RecipeApiFactoryWithIdentityProxy>
+public class ControllerCollection : ICollectionFixture<XUnitRecipeApiFactoryWithIdentityProxy>
 {
     // This class has no code, and is never created. Its purpose is simply
     // to be the place to apply [CollectionDefinition] and all the

@@ -14,7 +14,7 @@ namespace Recipers.Api.Tests.Helpers;
 /// The Identity Proxy acts as an authentication server, allowing tests to obtain JWT tokens.
 /// </remarks>
 /// <seealso cref="WebApplicationFactory{TEntryPoint}"/>
-public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMarker>, IAsyncLifetime
+public class RecipeApiFactoryWithIdentityProxy : WebApplicationFactory<IWebApiMarker>
 {
     // We need the authority up-front, so this is the only thing we cannot change dynamically
     private const string AUTHORITY = "https://login.microsoftonline.com/common/v2.0";

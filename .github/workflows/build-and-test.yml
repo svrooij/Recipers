@@ -29,25 +29,27 @@ jobs:
     - name: Build solution
       run: dotnet build --no-restore --configuration Release
       
-    - name: Run tests with coverage
-      run: dotnet run --project ./tests/Recipers.Api.Tests/Recipers.Api.Tests.csproj --configuration Release --report-xunit-trx
+    - name: Run xunit tests
+      run: dotnet run --project ./tests/Recipers.Api.Tests/Recipers.Api.Tests.csproj --configuration Release --no-build
+    
+    - name: Run TUnit tests
+      if: always()
+      run: dotnet run --project ./tests/Recipers.Api.TUnitTests/Recipers.Api.TUnitTests.csproj --configuration Release --no-build --report-trx --coverage --coverage-output-format cobertura 
       
-    # - name: Install ReportGenerator
-    #   if: always()
-    #   run: dotnet tool install -g dotnet-reportgenerator-globaltool
-      
-    # - name: Generate coverage report
-    #   if: always()
-    #   env:
-    #     REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
-    #   run: reportgenerator -reports:./coverage/**/coverage.cobertura.xml -targetdir:./coverage/report -reporttypes:"MarkdownSummaryGithub;Cobertura"
-      
-    # - name: Add coverage to summary
-    #   if: always()
-    #   run: |
-    #     if [ -f ./coverage/report/SummaryGithub.md ]; then
-    #       cat ./coverage/report/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
-    #     fi
+    - name: Generate coverage report
+      if: always()
+      env:
+        REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        reportgenerator -reports:./tests/**/*.cobertura.xml -targetdir:./coverage/report -reporttypes:"MarkdownSummaryGithub;Html;Cobertura"
+            
+    - name: Add coverage to summary
+      if: always()
+      run: |
+        if [ -f ./coverage/report/SummaryGithub.md ]; then
+          cat ./coverage/report/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+        fi
         
     - name: Publish test results
       uses: EnricoMi/publish-unit-test-result-action@v2
@@ -58,12 +60,12 @@ jobs:
         check_name: Test Results
         comment_mode: off
         
-    # - name: Upload coverage reports
-    #   uses: actions/upload-artifact@v4
-    #   if: always()
-    #   with:
-    #     name: coverage-report
-    #     path: ./coverage/report
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: ./coverage/report
         
     - name: Upload test results
       uses: actions/upload-artifact@v4

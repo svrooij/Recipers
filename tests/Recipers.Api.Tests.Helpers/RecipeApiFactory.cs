@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.TestHost;
 
 namespace Recipers.Api.Tests.Helpers;
 
-public class RecipeApiFactory : WebApplicationFactory<IWebApiMarker>, IAsyncLifetime
+public class RecipeApiFactory : WebApplicationFactory<IWebApiMarker>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -22,18 +22,6 @@ public class RecipeApiFactory : WebApplicationFactory<IWebApiMarker>, IAsyncLife
             // Example: services.AddSingleton<IRecipeService, MockRecipeService>();
             // You can add mock services or replace existing ones here
         });
-    }
-
-    public async ValueTask InitializeAsync()
-    {
-        // Initialize any resources needed before tests run
-        // For example, seeding a database or setting up mock services
-        await Task.CompletedTask;
-    }
-
-    public override async ValueTask DisposeAsync()
-    {
-        await base.DisposeAsync();
     }
 
 }

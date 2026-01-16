@@ -155,7 +155,7 @@
       ]
     },
     {
-      "id": "demo-mdruswqm-luy4",
+      "id": "demo-mdruswqm-luy4x",
       "title": "🧑‍💻 Show API",
       "icons": {
         "start": "run-all"
@@ -190,7 +190,7 @@
           }
         }
       ],
-      "id": "demo-mdrv738n-8trd"
+      "id": "demo-mdrv738n-8trdx"
     },
     {
       "title": "🧑‍💻 401 on all endpoints",
@@ -203,12 +203,12 @@
           "action": "snippet",
           "contentPath": ".demo/.snippets/show-code.json",
           "args": {
-            "FILE_PATH": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs"
+            "FILE_PATH": "tests/Recipers.Api.TUnitTests/MinimalApiEndpointsValidator.cs"
           }
         },
         {
           "action": "highlight",
-          "path": "tests/Recipers.Api.Tests/MinimalApiEndpointsValidator.cs",
+          "path": "tests/Recipers.Api.TUnitTests/MinimalApiEndpointsValidator.cs",
           "highlightWholeLine": true,
           "startPlaceholder": "// ------------------------- Authentication Tests -------------------------",
           "endPlaceholder": "// ------------------------- End Authentication Tests ---------------------"
@@ -222,7 +222,7 @@
           "command": "testing.debugCurrentFile"
         }
       ],
-      "id": "demo-mdrvve1i-zfqp"
+      "id": "demo-mdrvve1i-zfqpx"
     },
     {
       "title": "🧑‍🏫 Inject signing keys",
@@ -239,7 +239,7 @@
           }
         }
       ],
-      "id": "demo-mdrxfed2-702q"
+      "id": "demo-mdrxfed2-702qx"
     },
     {
       "title": "🧑‍💻 IWebApiFactory",
@@ -252,11 +252,11 @@
           "action": "snippet",
           "contentPath": ".demo/.snippets/show-code.json",
           "args": {
-            "FILE_PATH": "tests/Recipers.Api.Tests/Helpers/RecipeApiFactoryWithIdentityProxy.cs"
+            "FILE_PATH": "tests/Recipers.Api.Tests.Helpers/RecipeApiFactoryWithIdentityProxy.cs"
           }
         }
       ],
-      "id": "demo-mdrxi4me-u5rd"
+      "id": "demo-mdrxi4me-u5rdx"
     },
     {
       "title": "🧑‍💻 Recipe tests",
@@ -268,12 +268,12 @@
           "action": "snippet",
           "contentPath": ".demo/.snippets/show-code.json",
           "args": {
-            "FILE_PATH": "tests/Recipers.Api.Tests/ControllerTests/RecipeTests.cs"
+            "FILE_PATH": "tests/Recipers.Api.TUnitTests/ControllerTests/RecipeTests.cs"
           }
         },
         {
           "action": "highlight",
-          "path": "tests/Recipers.Api.Tests/ControllerTests/RecipeTests.cs",
+          "path": "tests/Recipers.Api.TUnitTests/ControllerTests/RecipeTests.cs",
           "startPlaceholder": "// Arrange: Get a valid token",
           "endPlaceholder": "token.Should().NotBeNull();"
         },
@@ -286,7 +286,7 @@
           "command": "testing.debugCurrentFile"
         }
       ],
-      "id": "demo-mdsth03z-3oh0",
+      "id": "demo-mdsth03z-3oh0x",
       "description": "Get a token and actually execute the endpoint with authentication enabled"
     },
     {
@@ -303,7 +303,7 @@
           }
         }
       ],
-      "id": "demo-mdsrrag4-ebxq",
+      "id": "demo-mdsrrag4-ebxqx",
       "description": "Easily protect yourself against these sorts off attackts"
     },
     {

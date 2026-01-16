@@ -1,5 +1,7 @@
+using System.Runtime.CompilerServices;
 using Testcontainers.IdentityProxy;
-
+[assembly: InternalsVisibleTo("Recipers.Api.TUnitTests")]
+[assembly: InternalsVisibleTo("Recipers.Api.Tests")]
 internal static class TokenHelper
 {
   public static TokenRequest CreateTokenRequestForStephan()
