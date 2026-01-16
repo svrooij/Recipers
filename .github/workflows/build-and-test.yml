@@ -9,49 +9,54 @@ on:
 
 jobs:
   build-and-test:
+    name: 🛠️ Build and Test
     runs-on: ubuntu-latest
     permissions:
       checks: write
       pull-requests: write
     
     steps:
-    - name: Checkout code
+    - name: 👨‍💻 Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup .NET 10
+    - name: 👨‍🔧 Setup .NET 10
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '10.0.x'
         
-    - name: Restore dependencies
+    - name: 🎒 Restore dependencies
       run: dotnet restore
       
-    - name: Build solution
+    - name: 🛠️ Build solution
       run: dotnet build --no-restore --configuration Release
-      
-    - name: Run xunit tests
-      run: dotnet run --project ./tests/Recipers.Api.Tests/Recipers.Api.Tests.csproj --configuration Release --no-build
     
-    - name: Run TUnit tests
+    - name: 🧪 Run TUnit tests
       if: always()
       run: dotnet run --project ./tests/Recipers.Api.TUnitTests/Recipers.Api.TUnitTests.csproj --configuration Release --no-build --report-trx --coverage --coverage-output-format cobertura 
       
-    - name: Generate coverage report
+    - name: 📝 Generate coverage report
       if: always()
       env:
         REPORTGENERATOR_LICENSE: ${{ secrets.REPORTGENERATOR_LICENSE }}
       run: |
         dotnet tool install -g dotnet-reportgenerator-globaltool
-        reportgenerator -reports:./tests/**/*.cobertura.xml -targetdir:./coverage/report -reporttypes:"MarkdownSummaryGithub;Html;Cobertura"
-            
-    - name: Add coverage to summary
-      if: always()
-      run: |
+        reportgenerator -reports:./tests/**/*.cobertura.xml -targetdir:./coverage/report -reporttypes:"MarkdownSummaryGithub;Html;Cobertura" "-classfilters:-Recipers.Api.Tests.*;-Recipers.Api.TUnitTests.*"
         if [ -f ./coverage/report/SummaryGithub.md ]; then
           cat ./coverage/report/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
         fi
         
-    - name: Publish test results
+    - name: 📦 Upload coverage reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: ./coverage/report
+    
+    - name: 🧪 Run xunit tests
+      if: always()
+      run: dotnet run --project ./tests/Recipers.Api.Tests/Recipers.Api.Tests.csproj --configuration Release --no-build
+
+    - name: 🛫 Publish test results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
@@ -60,14 +65,7 @@ jobs:
         check_name: Test Results
         comment_mode: off
         
-    - name: Upload coverage reports
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: coverage-report
-        path: ./coverage/report
-        
-    - name: Upload test results
+    - name: 📦 Upload test results
       uses: actions/upload-artifact@v4
       if: always()
       with:
