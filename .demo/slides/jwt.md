@@ -1,5 +1,4 @@
 ---
-theme: quantum
 layout: section
 title: How does JWT Authentication work? 🔐
 ---
