@@ -1,5 +1,4 @@
 ---
-theme: quantum
 layout: section
 title: Identity proxy 🔐
 ---

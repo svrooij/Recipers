@@ -1,6 +1,7 @@
 {
   "demoTime.defaultFileType": "json",
   "workbench.editor.showTabs": "multiple",
-  "workbench.colorTheme": "Default Light Modern",
-  "window.zoomLevel": 2.5
+  "workbench.colorTheme": "Default Dark Modern",
+  "window.zoomLevel": 1,
+  "demoTime.customTheme": ".demo\\slides\\themes\\ctt.css"
 }

@@ -1,5 +1,4 @@
 ---
-theme: quantum
 layout: section
 Title: Protect against MITM attacks 🛡  ️
 ---
