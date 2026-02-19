@@ -7,8 +7,8 @@ namespace Recipers.Api.TUnitTests;
 public class MinimalApiEndpointsValidator
 {
 
-    private static RecipeApiFactory _factory;
-    private static HttpClient _client;
+    private static RecipeApiFactory? _factory;
+    private static HttpClient? _client;
 
     public MinimalApiEndpointsValidator()
     {
@@ -25,15 +25,15 @@ public class MinimalApiEndpointsValidator
     [After(HookType.Class)]
     public static void TearDown()
     {
-        _client.Dispose();
-        _factory.Dispose();
+        _client?.Dispose();
+        _factory?.Dispose();
     }
 
     [Test]
     public async Task Recipes_endpoint_should_return_statuscode_401_without_token()
     {
         // Test that endpoints require authorization
-        var response = await _client.GetAsync("/recipes", TestContext.Current!.Execution.CancellationToken);
+        var response = await _client!.GetAsync("/recipes", TestContext.Current!.Execution.CancellationToken);
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
@@ -41,7 +41,7 @@ public class MinimalApiEndpointsValidator
     public async Task WeatherForecast_endpoint_should_return_statuscode_401_without_token()
     {
         // Test that endpoints require authorization
-        var response = await _client.GetAsync("/weatherforecast", TestContext.Current!.Execution.CancellationToken);
+        var response = await _client!.GetAsync("/weatherforecast", TestContext.Current!.Execution.CancellationToken);
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
@@ -49,7 +49,7 @@ public class MinimalApiEndpointsValidator
     public async Task NotExisting_endpoint_should_return_statuscode_401_without_token()
     {
         // Test that endpoints require authorization
-        var response = await _client.GetAsync("/notexisting", TestContext.Current!.Execution.CancellationToken);
+        var response = await _client!.GetAsync("/notexisting", TestContext.Current!.Execution.CancellationToken);
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
@@ -88,7 +88,7 @@ public class MinimalApiEndpointsValidator
         // undefined routes return 404, if you did not set up RequireAuthorization on the entire API.
         var urlPath = endpointDefinition.Path.Replace("{id}", Guid.NewGuid().ToString());
         var req = new HttpRequestMessage(new HttpMethod(endpointDefinition.Method.ToUpperInvariant()), urlPath);
-        var result = await _client.SendAsync(req, TestContext.Current!.Execution.CancellationToken);
+        var result = await _client!.SendAsync(req, TestContext.Current!.Execution.CancellationToken);
         result.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{endpointDefinition.Method.ToUpper()} {endpointDefinition.Path}` should require authorization");
 
         // Simulate a request with a faulty token
@@ -98,9 +98,11 @@ public class MinimalApiEndpointsValidator
         result2.StatusCode.Should().Be(HttpStatusCode.Unauthorized, $"`{endpointDefinition.Method.ToUpper()} {endpointDefinition.Path}` should return 401 with a faulty token");
     }
 
+#pragma warning disable TUnit0014 // Public method missing [Test] attribute
     public void Dispose()
+#pragma warning restore TUnit0014 // Public method missing [Test] attribute
     {
-        _factory.Dispose();
+        _factory?.Dispose();
     }
 
     // ------------------------- End Authentication Tests ---------------------
