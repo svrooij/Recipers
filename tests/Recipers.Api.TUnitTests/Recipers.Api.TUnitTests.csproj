@@ -9,7 +9,7 @@
 
   <ItemGroup>
 	<PackageReference Include="FluentAssertions" Version="[6.12.2]" />
-    <PackageReference Include="TUnit" Version="1.11.45" />
+    <PackageReference Include="TUnit" Version="1.16.4" />
   </ItemGroup>
 
   <ItemGroup>
