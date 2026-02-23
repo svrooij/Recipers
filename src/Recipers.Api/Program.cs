@@ -81,6 +81,7 @@ app.UseAuthorization();
 
 // Map the Weather API endpoints
 app.MapGet("/", () => "Welcome to the Recipers API! Documentation is available at /scalar/").ExcludeFromDescription();
+app.MapLoginApi();
 app.MapRecipeApi();
 app.MapWeatherApi();
 

@@ -1,0 +1,17 @@
+post http://localhost:5203/api/custom-login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "BLABLA"
+}
+
+###
+
+post http://localhost:5203/api/custom-login
+Content-Type: application/json
+
+{
+  "username": "OTHERUSER",
+  "password": "BLABLA"
+}
