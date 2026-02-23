@@ -6,7 +6,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build Recipers.Api",
-      "program": "${workspaceFolder}/src/Recipers.Api/bin/Debug/net9.0/Recipers.Api.dll",
+      "program": "${workspaceFolder}/src/Recipers.Api/bin/Debug/net10.0/Recipers.Api.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/Recipers.Api",
       "stopAtEntry": false,
